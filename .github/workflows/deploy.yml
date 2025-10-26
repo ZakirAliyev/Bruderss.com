@@ -3,7 +3,7 @@ name: Auto Deploy React App to Plesk via FTP
 on:
   push:
     branches:
-      - main  # başqa branch istifadə edirsənsə, onu yaz
+      - main  # başqa branch istifadə edirsənsə, onu dəyiş
 
 jobs:
   deploy:
@@ -21,13 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm install --force
 
+      # ⚡ CI=false əlavə edildi ki, build warning-lərdə dayanmasın
       - name: Build React project
-        run: npm run build
+        run: CI=false npm run build
 
       - name: Check if build directory exists
         run: |
           if [ ! -d "build" ]; then
-            echo "Build directory not found!"; exit 1;
+            echo "❌ Build directory not found!"; exit 1;
           fi
 
       - name: Deploy to FTP
