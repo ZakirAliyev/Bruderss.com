@@ -182,7 +182,7 @@ const postData = [
 ];
 
 export default function TechStartupPage() {
-    pageTitle('Tech Startup Agency');
+    pageTitle('Bruderss.com');
     return (
         <>
             <HeroStyle5
